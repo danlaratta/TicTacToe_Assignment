@@ -1,0 +1,17 @@
+
+table {
+    width: 60%;
+    font-size: 3rem;
+    text-align: center;
+}
+
+table, th, tr, td {
+    border:1px solid black;
+    margin: 0px;
+    padding: 0;
+    border-spacing: 0px;
+}
+
+th {
+    background-color: rgb(113, 171, 219);
+}
