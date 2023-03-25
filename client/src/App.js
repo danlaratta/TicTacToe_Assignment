@@ -1,6 +1,5 @@
-import GameBoard from './components/GameBoard'
 import styled from 'styled-components'
-import Table from './components/Table';
+import Game from './components/Game';
 
 const Container = styled.div`
     width: 100%;
@@ -13,8 +12,7 @@ const Container = styled.div`
 function App() {
   return (
       <Container>
-          {/* <GameBoard /> */}
-          <Table />
+          <Game />
       </Container>
   );
 }
