@@ -26,17 +26,13 @@ const Row = styled.div`
     display: flex;
 `
 
-const Status = styled.span`
-    display: flex;
-`
-
 const GameBoard = ({ xIsNext, squares, onPlay, calculateWinner }) => {
     const winner = calculateWinner(squares)
 
     let status;
 
     if (winner) {
-        status = "Winner: " + winner
+        status = "Player  " + winner + " is the winner!"
     } 
     else {
         status = "Next player: " + (xIsNext ? "X" : "O")
@@ -61,9 +57,7 @@ const GameBoard = ({ xIsNext, squares, onPlay, calculateWinner }) => {
   return (
     <Container>
         <Title> Tic Tac Toe </Title>
-
-        <Status> { status } </Status>
-
+        <h1> {status} </h1>
         <Board>
             <Row>
                 <Square value={squares[0]} sqaureClick={() => handleSquareClick(0)} />

@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 const Squares = styled(motion.button)`
     width: 15rem;
     height: 15rem;
-    background-color: ${props => props.squareColor};
+    background-color: ${props => props.squarecolor};
     display: flex;
     align-items: center;
     justify-content: center;
@@ -14,7 +14,7 @@ const Squares = styled(motion.button)`
     margin: 1rem;
 
     &:hover {
-        background-color:  ${props => props.hoverColor};
+        background-color:  ${props => props.hovercolor};
         border: 0.4rem solid #fff;
         cursor: ${props => props.disabled === 1 ? "default" : "pointer"};
     }
@@ -43,35 +43,35 @@ const HoverVariants = {
   };
 
 const Square = ({ value, sqaureClick }) => {
-    const [squareColor, setSquareColor] = useState('')
-    const [hoverColor, setHoverColor] = useState('')
+    const [squarecolor, setsquarecolor] = useState('')
+    const [hovercolor, sethovercolor] = useState('')
     const [disabled, setDisabled] = useState(0)
 
     useEffect(() => {
         if(value === 'X') {
-            setSquareColor('#ff680a')
-            setHoverColor('rbga(0, 0, 0, 0)')
+            setsquarecolor('#ff680a')
+            sethovercolor('rbga(0, 0, 0, 0)')
             setDisabled(1)
         }
         else if(value === 'O') {
-            setSquareColor('#08aace')
-            setHoverColor('rbga(0, 0, 0, 0)')
+            setsquarecolor('#08aace')
+            sethovercolor('rbga(0, 0, 0, 0)')
             setDisabled(1)
         }
         else {
-            setSquareColor('#414141')
-            setHoverColor('#737171')
+            setsquarecolor('#414141')
+            sethovercolor('#737171')
             setDisabled(0)
         }
 
-    }, [value, squareColor, hoverColor])
+    }, [value, squarecolor, hovercolor])
 
   return (
     <>
         <Squares 
             onClick={ sqaureClick } 
-            squareColor={squareColor} 
-            hoverColor={hoverColor}
+            squarecolor={squarecolor} 
+            hovercolor={hovercolor}
             disabled={disabled}
             initial="nothing" 
             whileHover="hover" 

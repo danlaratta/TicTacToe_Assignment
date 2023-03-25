@@ -1,25 +1,66 @@
 import React, { useState } from 'react'
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
 import GameBoard from './GameBoard'
 
 const Container = styled.div`
-    
+    width: 100%;
+    height: 100%;
 `
 
 const Wrapper = styled.div`
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
     
+`
+
+const HistoryContainer = styled.div`
+    margin-top: 18rem;
+    height: 51rem;
+    display: flex;
+    flex-direction: column;
+    background-color: #000;
+    padding: 2rem;
+    border-radius: 1rem;
 `
 
 const MovesHistory = styled.div`
-    
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #000;
+    border-radius: 1rem;
+`
+
+const Title = styled.h1`
+   color: #fff;
+   padding: 0;
+   margin: 0;
 `
 
 const Moves = styled.ol`
-    
+    padding: 0;
 `
 
 const MovesList = styled.li`
-    
+    margin: 1.5rem 0rem;
+`
+
+const MoveBtn = styled.button`
+    padding: 0.5rem 1rem;
+    background-color: #737171;
+    border: none;
+    color: #fff;
+    font-weight: 700;
+    border-radius: 0.5rem;
+
+    &:hover {
+        cursor: pointer;
+        background-color: #414141;
+    }
 `
 
 const Game = () => {
@@ -45,13 +86,14 @@ const Game = () => {
         let description
 
         if (move > 0) {
-        description = 'Go to move #' + move;
-        } else {
-        description = 'Go to game start';
+            description = 'Move number ' + move;
+        } 
+        else {
+            description = 'Return To Start';
         }
         return (
         <MovesList key={move}>
-            <button onClick={() => jumpTo(move)}>{description}</button>
+            <MoveBtn onClick={() => jumpTo(move)}> { description } </MoveBtn>
         </MovesList>
         )
     })
@@ -80,11 +122,15 @@ const Game = () => {
     return (
         <Container>
             <Wrapper>
-                <GameBoard xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} calculateWinner={calculateWinner}/>
+                <GameBoard xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} calculateWinner={calculateWinner} history={history} />
 
-                <MovesHistory>
-                    <Moves> {moves} </Moves>
-                </MovesHistory>
+                <HistoryContainer>
+                    <Title> Game History </Title>
+
+                    <MovesHistory>
+                        <Moves> {moves} </Moves>
+                    </MovesHistory>
+                </HistoryContainer>
             </Wrapper>
         </Container>
     )
